@@ -34,6 +34,7 @@ fit <- trainControl(method="cv",
                            number = 6,
                            classProbs = TRUE,
                            summaryFunction = twoClassSummary)
+
 # Train SVM model
 SVMModel <- train(classes~.,
                    traind,
@@ -42,6 +43,7 @@ SVMModel <- train(classes~.,
                    preProcess='scale',
                    trace=FALSE,
                    trControl=fit)
+
 # Find and print confusion matrix
 prediction <- predict(SVMModel, testd)
 confusion <- confusionMatrix(prediction, testd$classes, positive = "M")
